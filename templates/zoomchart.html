@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<div id="AliceOrBobButtons">
+    <input name="changesex"
+           id="Alicebutton"
+           type="radio"
+           value="wert1"
+           onclick="change_to_alice()" />&nbsp;Alice&nbsp;&nbsp;
+    <input name="changesex"
+           id="BobButton"
+           type="radio"
+           value="wert2"
+           onclick="change_to_bob()" />&nbsp;Bob&nbsp;&nbsp;
+</div>
 <svg width="900" height="960"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
