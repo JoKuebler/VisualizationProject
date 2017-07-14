@@ -126,27 +126,20 @@ var pack = d3.pack()
 
   function hue(h) {
     let h_new;
-    console.log(h);
     if (h < 0.10) {
-      console.log('1');
       h_new = 0;
-    } else if (0.10 < h < 0.30) {
-      console.log('2');
+    } else if (0.10 < h && h < 0.30) {
       h_new = 0.20
-    } else if (0.30 < h < 0.50) {
-      console.log('3');
+    } else if (0.30 < h && h < 0.50) {
       h_new = 0.40
-    } else if (0.50 < h < 0.70) {
-      console.log('4');
+    } else if (0.50 < h && h < 0.70) {
       h_new = 0.60
-    } else if (0.70 < h < 0.90) {
-      console.log('5');
+    } else if (0.70 < h && h < 0.90) {
       h_new = 0.80
     } else if (h > 0.90) {
-      console.log('6');
       h_new = 1
     }
-    handle.attr("cx", x(h));
+    handle.attr("cx", x(h_new));
   }
 // });
 </script>
