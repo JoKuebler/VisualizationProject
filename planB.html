@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<style>
+
+.ticks {
+  font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 10px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+  cursor: crosshair;
+}
+
+.handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+svg {
+  margin: auto;
+}
+
+</style>
+<svg width="660" height="560" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var format = d3.format(",d");
+
+var color = d3.scaleOrdinal(d3.schemeCategory20c);
+
+var pack = d3.pack()
+    .size([width, height])
+    .padding(1.5);
+
+var x = d3.scaleLinear()
+  .domain([0, 34])
+  .range([0, 600])
+  .clamp(true);
+
+var slider = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(" + 20 + "," + height / 1.05 + ")");
+
+    slider.append("line")
+        .attr("class", "track")
+        .attr("x1", x.range()[0])
+        .attr("x2", x.range()[1])
+      .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+        .attr("class", "track-inset")
+      .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+        .attr("class", "track-overlay")
+        .call(d3.drag()
+            .on("start.interrupt", function() { slider.interrupt(); })
+            .on("start drag", function() { hue(x.invert(d3.event.x)); }));
+
+    slider.insert("g", ".track-overlay")
+        .attr("class", "ticks")
+        .attr("transform", "translate(0," + 18 + ")")
+      .selectAll("text")
+      .data(x.ticks(6))
+      .enter().append("text")
+        .attr("x", x)
+        .attr("text-anchor", "middle")
+        .text(function(d) { return d + 'd'; });
+
+    var handle = slider.insert("circle", ".track-overlay")
+        .attr("class", "handle")
+        .attr("r", 9);
+
+    slider.transition() // Gratuitous intro!
+        .duration(750)
+        .tween("hue", function() {
+          var i = d3.interpolate(70, 0);
+          return function(t) { hue(i(t)); };
+        });
+
+d3.csv("Output.csv", function(d) {
+  d.value = +d.value;
+  if (d.value) return d;
+}, function(error, classes) {
+  if (error) throw error;
+
+  var root = d3.hierarchy({children: classes})
+      .sum(function(d) { return d.value; })
+      .each(function(d) {
+        if (id = d.data.id) {
+          var id, i = id.lastIndexOf(".");
+          d.id = id;
+          d.package = id.slice(0, i);
+          d.class = id.slice(i + 1);
+        }
+      });
+
+  var node = svg.selectAll(".node")
+    .data(pack(root).leaves())
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+  node.append("circle")
+      .attr("id", function(d) {  return d.id; })
+      .attr("r", function(d) { return d.r; })
+      .style("fill", function(d) { return color(d.package); });
+
+  node.append("clipPath")
+      .attr("id", function(d) { return "clip-" + d.id; })
+    .append("use")
+      .attr("xlink:href", function(d) { return "#" + d.id; });
+
+  node.append("text")
+      .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+    .selectAll("tspan")
+    .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
+    .enter().append("tspan")
+      .attr("x", 0)
+      .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+      .text(function(d) { return d; });
+
+  node.append("title")
+      .text(function(d) { return d.id + "\n" + format(d.value); });
+});
+
+function hue(h) {
+  handle.attr("cx", x(h));
+  svg.style("background-color", d3.hsl(h, 0.8, 0.8));
+}
+
+</script>

@@ -1,0 +1,121 @@
+{
+  "name": "Bacteria",
+  "children": [
+    {
+      "name": "FCB group",
+      "children": [
+        {
+          "name": "Bacteroidaceae",
+          "size": 0.2521
+        },
+        {
+          "name": "Odoribacteraceae",
+          "size": 0.1239
+        },
+        {
+          "name": "Porphyromonadaceae",
+          "children": [
+            {
+              "name": "Barnesiella",
+              "size": 0.0534
+            },
+            {
+              "name": "Parabacteroides",
+              "size": 0.0341
+            }
+          ]
+        },
+        {
+          "name": "Prevotellaceae",
+          "children": [
+            {
+              "name": "Paraprevotella",
+              "size": 0.1014
+            },
+            {
+              "name": "Paraprevotella",
+              "size": 0.0211
+            }
+          ]
+        },
+        {
+          "name": "Rikenellaceae",
+          "size": 0.1451
+        }
+      ]
+    },
+    {
+      "name": "Proteobacteria",
+      "children": [
+        {
+          "name": "Betaproteobacteria",
+          "size": 0.019
+        },
+                {
+          "name": "Deltaproteobacteria",
+                  "size": 0.0187
+        },
+                {
+          "name": "Gammaproteobacteria",
+              "size": 0.0287
+        }
+      ]
+    },
+    {
+      "name": "PVC group",
+      "size": 0.065193
+    },
+    {
+      "name": "Terrabacteria",
+      "children": [{
+          "name": "Actinobacteria",
+          "children": [{
+              "name": "Bifidobacteriales",
+              "size": 0.04840
+            },
+            {
+              "name": "Coriobacteriia",
+              "size": 0.031769
+            }
+          ]
+        },
+        {
+          "name": "Firmicutes",
+          "children": [{
+              "name": "Bacilli",
+              "size": 0.020046
+            },
+            {
+              "name": "Clostridiaceae",
+              "size": 0.154618
+            },
+            {
+              "name": "Eubacteriaceae",
+              "size": 0.193469
+            },
+            {
+              "name": "Lachnospiraceae",
+              "size": 0.147154
+            },
+            {
+              "name": "Oscillospiraceae",
+              "size": 0.084966
+            },
+            {
+              "name": "Ruminococcaceae",
+              "size": 0.395549
+            },
+            {
+              "name": "Erysipelotrichia",
+              "size": 0.016095
+            },
+            {
+              "name": "Negativicutes",
+              "size": 0.035818
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
