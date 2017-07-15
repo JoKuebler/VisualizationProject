@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!--<div id="AliceOrBobButtons">
+    <input name="changesex"
+           id="Alicebutton"
+           type="radio"
+           value="wert1"
+           onclick="{{ url_for('zoomchartBob') }}" />&nbsp;Alice&nbsp;&nbsp;
+    <input name="changesex"
+           id="BobButton"
+           type="radio"
+           value="wert2"
+           onclick="{{ url_for('zoomchartAlice') }}" />&nbsp;Bob&nbsp;&nbsp;
+</div>-->
+<style>
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    border: 2px black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    background-color: black;
+    color: white;
+}
+</style>
+  <header id="header">
+        <div class="BigSpacer"></div>
+        <div class="vertical">
+          <nav >
+            <ul>
+              <li><a href="{{ url_for('zoomchartAlice') }}">Alice</a><a href="{{ url_for('zoomchartBob') }}">Bob</a></li>
+            </ul>
+          </nav>
+        </div>
+</header>
+
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<div id ="content"></div>
+{% block content %}
+{% endblock %}
+</div>
