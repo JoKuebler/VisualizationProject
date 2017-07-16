@@ -1,0 +1,65 @@
+{
+  "name": "Bacteria",
+  "children": [
+    {
+      "name": "FCB group",
+      "children": [
+        {
+          "name": "Bacteroidaceae",
+          "size": 0.45293
+        },
+        {
+          "name": "Odoribacteraceae",
+          "size": 0.012662
+        },
+        {
+          "name": "Porphyromonadaceae",
+          "children": [
+            {
+              "name": "Tannerella",
+              "size": 0.011299
+            },
+            {
+              "name": "Parabacteroides",
+              "size": 0.055681
+            }
+          ]
+        },
+        {
+          "name": "Prevotellaceae",
+          "size": 0.013009
+        },
+        {
+          "name": "Rikenellaceae",
+          "size": 0.041154
+        }
+      ]
+    },
+    {
+      "name": "Proteobacteria",
+      "size": 0.075882
+    },
+    {
+      "name": "Terrabacteria",
+      "children": [
+            {
+              "name": "Clostridiaceae",
+              "size": 0.108295
+            },
+            {
+              "name": "Eubacteriaceae",
+              "size": 0.027798
+            },
+            {
+              "name": "Lachnospiraceae",
+              "size": 0.089032
+            },
+            {
+              "name": "Ruminococcaceae",
+              "size": 0.037992
+            }
+          ]
+        }
+      ]
+}
+
