@@ -1,3 +1,11 @@
+body {
+  background-color: #eeeeee;
+}
+
+#content {
+  text-align: center;
+}
+
 .node {
   cursor: pointer;
 }
@@ -58,4 +66,20 @@
   stroke: #000;
   stroke-opacity: 0.5;
   stroke-width: 1.25px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.vertical {
+  text-align: center;
+}
+
+.vertical a {
+  background-color: lightgray;
+  box-shadow: unset;
+  width: 5em;
+  margin: 0.5em;
+  border: 1px solid grey;
 }

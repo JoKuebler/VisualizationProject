@@ -8,9 +8,9 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# read in vehicle data
+# read in data
 def makedataAlice00():
-    with open('example.json') as data_file:
+    with open('Alice00.json') as data_file:
         #data = pd.read_csv(data_file, ';')
         data = json.load(data_file)
     return data
