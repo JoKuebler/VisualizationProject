@@ -23,7 +23,7 @@ def makedata(filelist):
 @app.route('/')
 def main():
 
-    return render_template('index.html', data=json.dumps(makedata({'Alice00.json', 'Bob00.json'})))
+    return render_template('index.html', data=json.dumps(makedata({'Alice00.json', 'Bob00.json', 'Alice01.json'})))
 
 if __name__ == '__main__':
     # main()

@@ -49,22 +49,17 @@ h4 {
 
   var dataSet = {{ data | safe }};
 
-  doMyPlot(dataSet['Alice00.json'], "Alice");
+  var bubbles = doMyPlot(dataSet);
+  bubbles.init("Alice", "00.json")
+
 
   document.getElementById("aliceButton").addEventListener("click", function() {
-    doMyPlot(dataSet['Alice00.json'], "Alice");
+    bubbles.init("Alice", "00.json");
   });
 
   document.getElementById("bobButton").addEventListener("click", function() {
-    doMyPlot(dataSet['Bob00.json'], 'Bob');
+    bubbles.init("Bob", "00.json");
   });
-
-  // select elements
-  var elements = Array.from(document.querySelectorAll('svg .track-inset'));
-
-
-})
-
 
 
 </script>
