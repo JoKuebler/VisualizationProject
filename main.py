@@ -9,22 +9,21 @@ import pandas as pd
 app = Flask(__name__)
 
 # read in data
-def makedataAlice00():
-    with open('Alice00.json') as data_file:
-        #data = pd.read_csv(data_file, ';')
-        data = json.load(data_file)
-    return data
+def makedata(filelist):
 
-def makedataBob00():
-    with open('Bob00.json') as data_file:
-        #data = pd.read_csv(data_file, ';')
-        data = json.load(data_file)
-    return data
+    dict = {}
+    print(filelist)
+    for file in filelist:
+        with open(file) as data_file:
+            data = json.load(data_file)
+        dict[file] = data
+    return dict
 
 # default route
 @app.route('/')
 def main():
-    return render_template('index.html', data=json.dumps(makedataAlice00()))
+
+    return render_template('index.html', data=json.dumps(makedata({'Alice00.json', 'Bob00.json'})))
 
 if __name__ == '__main__':
     # main()

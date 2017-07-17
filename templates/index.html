@@ -38,8 +38,8 @@ h4 {
         <div class="vertical">
           <h4>Choose dataset you want to visualize</h4>
           <div>
-          <a href="">Alice</a>
-          <a href="">Bob</a>
+          <input type="button" id="aliceButton" value="Alice">
+          <input type="button" id="bobButton" value="Bob">
           </div>
         </div>
 </header>
@@ -49,6 +49,22 @@ h4 {
 
   var dataSet = {{ data | safe }};
 
-  doMyPlot(dataSet);
+  doMyPlot(dataSet['Alice00.json'], "Alice");
+
+  document.getElementById("aliceButton").addEventListener("click", function() {
+    doMyPlot(dataSet['Alice00.json'], "Alice");
+  });
+
+  document.getElementById("bobButton").addEventListener("click", function() {
+    doMyPlot(dataSet['Bob00.json'], 'Bob');
+  });
+
+  // select elements
+  var elements = Array.from(document.querySelectorAll('svg .track-inset'));
+
+
+})
+
+
 
 </script>

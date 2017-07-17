@@ -1,6 +1,10 @@
-function doMyPlot(dataSet) {
+function doMyPlot(dataSet, currentData) {
 
   svg = document.getElementById("containerSvg");
+
+  while (svg.firstChild) {
+    svg.removeChild(svg.firstChild);
+  }
 
   var ticks = [0,1,3,6,8,34];
 
@@ -25,6 +29,7 @@ function doMyPlot(dataSet) {
         .attr("x2", x.range()[1])
         .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
         .attr("class", "track-inset")
+        .attr("id", "timeline")
         .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
         .attr("class", "track-overlay")
         .call(d3.drag()
@@ -119,19 +124,19 @@ function doMyPlot(dataSet) {
     }
 
     function hue(h) {
-      let h_new;
+      var h_new;
       if (h < 0.10) {
         h_new = 0;
       } else if (0.10 < h && h < 0.30) {
-        h_new = 0.20
+        h_new = 0.20;
       } else if (0.30 < h && h < 0.50) {
-        h_new = 0.40
+        h_new = 0.40;
       } else if (0.50 < h && h < 0.70) {
-        h_new = 0.60
+        h_new = 0.60;
       } else if (0.70 < h && h < 0.90) {
-        h_new = 0.80
+        h_new = 0.80;
       } else if (h > 0.90) {
-        h_new = 1
+        h_new = 1;
       }
       handle.attr("cx", x(h_new));
     }
