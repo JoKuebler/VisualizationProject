@@ -26,16 +26,6 @@ def makedataBob00():
 def main():
     return render_template('index.html', data=json.dumps(makedataAlice00()))
 
-# route for bubbleChart
-@app.route('/zoomchartAlice')
-def zoomchartAlice():
-    return render_template('zoomchartAlice.html', data=json.dumps(makedataAlice00()))
-
-@app.route('/zoomchartBob')
-def zoomchartBob():
-    return render_template('zoomchartBob.html', data=json.dumps(makedataBob00()))
-
-
 if __name__ == '__main__':
     # main()
     app.run(debug=True)

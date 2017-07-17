@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<!--<div id="AliceOrBobButtons">
-    <input name="changesex"
-           id="Alicebutton"
-           type="radio"
-           value="wert1"
-           onclick="{{ url_for('zoomchartBob') }}" />&nbsp;Alice&nbsp;&nbsp;
-    <input name="changesex"
-           id="BobButton"
-           type="radio"
-           value="wert2"
-           onclick="{{ url_for('zoomchartAlice') }}" />&nbsp;Bob&nbsp;&nbsp;
-</div>-->
 <style>
 
 .vertical {
@@ -43,18 +31,24 @@ h4 {
 
 
 </style>
-  <header id="header">
+
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="{{ url_for('static', filename='zoomchart.js') }}"></script>
+<header id="header">
         <div class="vertical">
           <h4>Choose dataset you want to visualize</h4>
           <div>
-          <a href="{{ url_for('zoomchartAlice') }}">Alice</a>
-          <a href="{{ url_for('zoomchartBob') }}">Bob</a>
+          <a href="">Alice</a>
+          <a href="">Bob</a>
           </div>
         </div>
 </header>
+<svg id="containerSvg" width="900" height="960"></svg>
 
-<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-<div id ="content">
-{% block content %}
-{% endblock %}
-</div>
+<script type="text/javascript">
+
+  var dataSet = {{ data | safe }};
+
+  doMyPlot(dataSet);
+
+</script>
