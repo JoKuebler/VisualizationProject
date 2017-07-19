@@ -16,8 +16,8 @@ function doMyPlot(dataSet) {
 
         svg = d3.select("svg"),
             margin = 20,
-            diameter = svg.attr("width"),
-            g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+            diameter = 900,
+            g = svg.append("g").attr("transform", "translate(" + 1450 / 2 + "," + diameter / 2 + ")");
 
         g.attr("id", "firstG");
 
@@ -25,7 +25,7 @@ function doMyPlot(dataSet) {
 
         var color = d3.scaleLinear()
             .domain([-1, 5])
-            .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+            .range(["hsl(193,63%,95%)", "hsl(144,100%,21%)"])
             .interpolate(d3.interpolateHcl);
 
         var pack = d3.pack()
@@ -97,18 +97,18 @@ function doMyPlot(dataSet) {
 
           svg = d3.select("svg"),
               margin = 20,
-              diameter = svg.attr("width"),
-              g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+              diameter = 900,
+              g = svg.append("g").attr("transform", "translate(" + 1450 / 2 + "," + diameter / 2 + ")");
 
           g.attr("id", "firstG");
 
           var color = d3.scaleLinear()
               .domain([-1, 5])
-              .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+              .range(["hsl(193,63%,95%)", "hsl(144,100%,21%)"])
               .interpolate(d3.interpolateHcl);
 
           var pack = d3.pack()
-              .size([svg.attr("width") - 20 , svg.attr("width") - 20])
+              .size([900 - 20 , 900 - 20])
               .padding(2);
 
             root = d3.hierarchy(data)
@@ -159,7 +159,7 @@ function doMyPlot(dataSet) {
             }
 
             function zoomTo(v) {
-              var k = svg.attr("width") / v[2]; view = v;
+              var k = 900 / v[2]; view = v;
               node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
               circle.attr("r", function(d) { return d.r * k; });
             }
@@ -177,7 +177,7 @@ function doSlider(svg, gElement, ticks) {
 
           var slider = svg.append("g")
               .attr("class", "slider")
-              .attr("transform", "translate(" + 20 + "," + 960 / 1.05 + ")");
+              .attr("transform", "translate(" + 300 + "," + 960 / 1.05 + ")");
 
           slider.append("line")
                 .attr("class", "track")

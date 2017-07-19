@@ -21,9 +21,16 @@ def makedata(filelist):
 
 # default route
 @app.route('/')
-def main():
+def index():
+    return render_template('index.html')
 
-    return render_template('index.html', data=json.dumps(makedata({'Alice00.json', 'Bob00.json', 'Alice01.json', 'Bob01.json', 'Alice03.json', 'Bob03.json', 'Alice06.json', 'Bob06.json', 'Alice08.json', 'Bob08.json', 'Alice34.json', 'Bob34.json'})))
+
+# default route
+@app.route('/taxanomy')
+def taxanomy():
+    return render_template('taxonomy.html', data=json.dumps(makedata({'Alice00.json', 'Bob00.json', 'Alice01.json', 'Bob01.json', 'Alice03.json', 'Bob03.json', 'Alice06.json', 'Bob06.json', 'Alice08.json', 'Bob08.json', 'Alice34.json', 'Bob34.json'})))
+
+
 
 if __name__ == '__main__':
     # main()
