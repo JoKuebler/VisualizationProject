@@ -16,8 +16,8 @@ function doMyPlot(dataSet) {
 
         svg = d3.select("svg"),
             margin = 20,
-            diameter = 900,
-            g = svg.append("g").attr("transform", "translate(" + 1200 / 2 + "," + diameter / 2 + ")");
+            diameter = svg.attr("width"),
+            g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
         g.attr("id", "firstG");
 
@@ -177,7 +177,7 @@ function doSlider(svg, gElement, ticks) {
 
           var slider = svg.append("g")
               .attr("class", "slider")
-              .attr("transform", "translate(" + 180 + "," + 960 / 1.05 + ")");
+              .attr("transform", "translate(" + 20 + "," + 960 / 1.05 + ")");
 
           slider.append("line")
                 .attr("class", "track")
@@ -217,12 +217,16 @@ function doSlider(svg, gElement, ticks) {
                     whatever(currentPerson, "01.json");
                   } else if (0.30 < h && h < 0.50) {
                     h_new = 0.40;
+                    whatever(currentPerson, "03.json");
                   } else if (0.50 < h && h < 0.70) {
                     h_new = 0.60;
+                    whatever(currentPerson, "06.json");
                   } else if (0.70 < h && h < 0.90) {
                     h_new = 0.80;
+                    whatever(currentPerson, "08.json");
                   } else if (h > 0.90) {
                     h_new = 1;
+                    whatever(currentPerson, "34.json");
                   }
                   handle.attr("cx", x(h_new));
                 }
