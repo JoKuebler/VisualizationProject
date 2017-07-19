@@ -5,10 +5,6 @@ function doMyPlot(dataSet) {
     var currentPerson;
     var currentTime;
     var ticks = [0,1,3,6,8,34];
-    // var svgMain = document.getElementById("containerSvg");
-    var svg = " sds"
-    // g = svg.append("g").attr("transform", "translate(" + svg.attr("width") / 2 + "," + svg.attr("width") / 2 + ")");
-
   dict = {};
 
   dict['init'] = function(person, timepoint) {
@@ -19,8 +15,8 @@ function doMyPlot(dataSet) {
 
         svg = d3.select("svg"),
             margin = 20,
-            diameter = svg.attr("width"),
-            g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+            diameter = 900,
+            g = svg.append("g").attr("transform", "translate(" + 1200 / 2 + "," + diameter / 2 + ")");
 
         g.attr("id", "firstG");
 
@@ -103,7 +99,7 @@ function doMyPlot(dataSet) {
               diameter = svg.attr("width"),
               g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-          g.attr("id", "firstG");    
+          g.attr("id", "firstG");
 
           var color = d3.scaleLinear()
               .domain([-1, 5])
@@ -180,7 +176,7 @@ function doSlider(svg, gElement, ticks) {
 
           var slider = svg.append("g")
               .attr("class", "slider")
-              .attr("transform", "translate(" + 20 + "," + 960 / 1.05 + ")");
+              .attr("transform", "translate(" + 180 + "," + 960 / 1.05 + ")");
 
           slider.append("line")
                 .attr("class", "track")
