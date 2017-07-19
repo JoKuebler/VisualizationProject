@@ -5,6 +5,7 @@ function doMyPlot(dataSet) {
     var currentPerson;
     var currentTime;
     var ticks = [0,1,3,6,8,34];
+    var svg = "sds"
   dict = {};
 
   dict['init'] = function(person, timepoint) {
